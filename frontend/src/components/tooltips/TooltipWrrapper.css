@@ -1,0 +1,20 @@
+/* TooltipWrapper.css */
+
+.tooltip-trigger {
+    display: inline-block; /* Ensures it works with images, buttons, text, etc. */
+    cursor: pointer;
+  }
+  
+  .tooltip-content {
+    background-color: black;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tooltip-arrow {
+    fill: black;
+  }
+  

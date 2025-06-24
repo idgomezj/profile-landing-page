@@ -1,0 +1,1 @@
+export { getProjectsInfo } from "./service";
