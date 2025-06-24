@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  profile-ai:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2025-06-24T19:50:06.810096-04:00"
+    description: Open-source profile AI solution developed by Ivan Gomez Jimenez
+    digest: e3b545fa233927ad58ed768295a6159a3b1026a1f59b9618b1a46cd25626c1d9
+    name: profile-ai
+    type: application
+    urls:
+    - https://idgomezj.github.io/profile-landing-page/helm-repo/profile-ai-0.0.0.tgz
+    version: 0.0.0
+generated: "2025-06-24T19:50:06.809359-04:00"
