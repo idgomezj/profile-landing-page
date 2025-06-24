@@ -83,4 +83,6 @@ const Infrastructure = memo(() => {
   );
 });
 
+Infrastructure.displayName = "Infrastructure";
+
 export default Infrastructure;

@@ -71,4 +71,6 @@ const Data = memo(() => {
   );
 });
 
+Data.displayName = "Data";
+
 export default Data;

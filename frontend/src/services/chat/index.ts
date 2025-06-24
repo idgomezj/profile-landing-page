@@ -1,1 +1,1 @@
-export { getProjectsInfo } from "./service";
+export { postChatRequest } from "./service";

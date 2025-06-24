@@ -89,4 +89,6 @@ const TechStack = memo(() => {
   );
 });
 
+TechStack.displayName = "TechStack";
+
 export default TechStack;

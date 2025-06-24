@@ -10,11 +10,11 @@ const ProfileInfo = memo(() => (
 
     <div className="space-y-4 text-gray-600 leading-relaxed text-justify text-md">
       <p>
-        I'm a full-stack engineer with a passion for learning and building with modern technologies. I bring strong experience across backend systems using Python, Golang, and Rust, paired with solid frontend development in Angular, React, and Next.js. I deploy and scale services on AWS using DevOps tools such as Docker, GitHub Actions, Jenkins, Airflow, and ArgoCD.
+        I&apos;m a full-stack engineer with a passion for learning and building with modern technologies. I bring strong experience across backend systems using Python, Golang, and Rust, paired with solid frontend development in Angular, React, and Next.js. I deploy and scale services on AWS using DevOps tools such as Docker, GitHub Actions, Jenkins, Airflow, and ArgoCD.
       </p>
 
       <p>
-        My data expertise includes applied analytics for business intelligence, and hands-on AI development in areas like forecasting, computer vision, and natural language processing. I’ve worked with autoregressive large language models like LLaMA 2 and developed Retrieval-Augmented Generation systems using Pydantic AI and vector databases.
+        My data expertise includes applied analytics for business intelligence, and hands-on AI development in areas like forecasting, computer vision, and natural language processing. I&apos;ve worked with autoregressive large language models like LLaMA 2 and developed Retrieval-Augmented Generation systems using Pydantic AI and vector databases.
       </p>
 
       <p>
@@ -27,5 +27,7 @@ const ProfileInfo = memo(() => (
     </div>
   </div>
 ));
+
+ProfileInfo.displayName = "ProfileInfo";
 
 export default ProfileInfo;

@@ -34,7 +34,9 @@ export default function Main(){
                 </div>
                 <div className="flex flex-row w-[65%] items-start justify-between mt-14 ">
                   {/* <p className="text-gray-500 text-md">Software Engineer</p> */}
-                  <p className="text-gray-500 text-md cursor-pointer hover:text-cyan-500 hover:scale-[130%] transition-all duration-300">Get the code for this profile page</p>
+                  <a href="https://github.com/idgomezj/profile-landing-page" target="_blank" rel="noopener noreferrer">
+                    <p className="text-gray-500 text-md cursor-pointer hover:text-cyan-500 hover:scale-[130%] transition-all duration-300">Get the code for this profile page</p>
+                  </a>
                   <p className="text-gray-500 text-md w-[25%] text-center">Science and technology are the engines of change—learn boldly, apply daily, and shape the future.</p>
                 </div>
               </div>

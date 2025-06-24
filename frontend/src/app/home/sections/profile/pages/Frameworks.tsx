@@ -71,4 +71,6 @@ const Frameworks = memo(() => {
   );
 });
 
+Frameworks.displayName = "Frameworks";
+
 export default Frameworks;

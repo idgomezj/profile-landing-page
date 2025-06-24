@@ -67,4 +67,6 @@ const CI_CD = memo(() => {
   );
 });
 
+CI_CD.displayName = "CI_CD";
+
 export default CI_CD;

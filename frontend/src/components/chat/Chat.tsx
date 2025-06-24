@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import * as Dialog from "@radix-ui/react-dialog";
 import { ChatIcon } from "@/components/ui/icons";
-import { postChatRequest } from "@/services/chat/service";
+import { postChatRequest } from "@/services/chat";
 
 interface Message {
 	id: string;

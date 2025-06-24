@@ -63,4 +63,6 @@ const Languages = memo(() => {
   );
 });
 
+Languages.displayName = "Languages";
+
 export default Languages;
