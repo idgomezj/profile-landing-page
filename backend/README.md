@@ -25,19 +25,24 @@ Built with **FastAPI**, **PydanticAI**, and an LLM (e.g. OpenAI’s GPT‑4).
 
 1. Clone this repo:
     ```bash
-    git clone https://github.com/your/repo.git
+    git clone https://github.com/idgomezj/profile-landing-page.git
     cd repo
     ```
 
 2. Install dependencies:
     ```bash
-    pip install fastapi uvicorn pydantic-ai pydantic-settings python-dotenv
+    pip install -r requirements.txt
     ```
 
 3. Create a `.env` file:
     ```
-    OPENAI_API_KEY=sk-...
+    api_key=...
+    model_name=gemini-2.0-flash
+    provider=gemini
+    frontend_url=http://localhost:3000
     ```
+
+Note.: You can select openAI, DeepSeek or Gemini as LLM resource.
 
 4. Run the app:
     ```bash
@@ -68,10 +73,10 @@ class Settings(BaseSettings):
     openai_api_key: str
 
     model_config = SettingsConfigDict(env_file=".env")
-
+```
 
 ## Run Service
 
-```
+```bash
 python3 -m uvicorn main:app --host 0.0.0.0 --reload
 ```

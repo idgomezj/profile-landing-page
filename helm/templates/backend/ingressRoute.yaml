@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{.Chart.Name}}-backend-ingress
+  namespace: {{ .Values.namespace }}
+
+spec:
+  entryPoints:
+    - web
+
+  routes:
+  - match: Host(`{{ .Values.host }}`)
+    kind: Rule
+    services:
+    - name: {{.Chart.Name}}-backend-service
+      port: 8000

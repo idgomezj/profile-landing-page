@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-frontend
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Chart.Name }}-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-app
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-app
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-frontend
+          image: idgomezj/profile-frontend:0.0.0
+          workingDir: /app
+          command: ["/bin/sh", "-c"]
+          args:
+            - npm run build && npm run start
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NEXT_PUBLIC_API_URL
+              value: {{ if .Values.frontend.api_url }}{{ .Values.frontend.api_url }}{{ else }}https://chat.{{ .Values.host }}{{ end }}
+      imagePullSecrets:
+        - name: aws-atcargo-credentials

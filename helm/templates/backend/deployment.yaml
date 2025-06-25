@@ -1,0 +1,36 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{.Chart.Name}}-backend
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{.Chart.Name}}-backend-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Chart.Name}}-backend-app
+  template:
+    metadata:
+      labels:
+        app: {{.Chart.Name}}-backend-app
+    spec:
+      containers:
+        - name: {{.Chart.Name}}-backend
+          image: idgomezj/profile-backend:0.0.0
+          workingDir: /app
+          command: ["/bin/sh", "-c"]
+          args: ["python3 -m uvicorn main:app --host 0.0.0.0 --reload"]
+          ports:
+            - containerPort: 8000
+          env:
+            - name: api_key
+              value: {{ .Values.backend.api_key }}
+            - name: model_name
+              value: {{ .Values.backend.model_name }}
+            - name: provider
+              value: {{ .Values.backend.provider }}
+            - name: frontend_url
+              value: {{ if .Values.backend.frontend_list }}{{ .Values.backend.frontend_list }}{{ else }}"['https://www.{{ .Values.host }}','https://www.{{ .Values.host }}']"{{ end }}
+

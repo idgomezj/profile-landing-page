@@ -2,19 +2,30 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from agent import agent, logger, log_agent_response
+from agent import agent,  log_agent_response
 from models import ProfileResponse
 from start_message import start_message
 from config import get_settings
+import logging
 
-
+# Configure logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler()  # Only console output
+    ]
+)
+logger = logging.getLogger(__name__)
 app = FastAPI(title="Ivan's Profile AI Assistant")
 settings = get_settings()
+
+logger.info(f"Frontend URLs: {settings.frontend_url}")
 
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.frontend_url],  # Add your frontend URLs
+    allow_origins=settings.frontend_url,  # Add your frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

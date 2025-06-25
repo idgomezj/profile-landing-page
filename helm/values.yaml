@@ -1,0 +1,12 @@
+namespace: idgomezj
+fullnameOverride: "Profile AI"
+host: "idgomezj.com"
+
+frontend:
+  api_url: ""
+
+backend:
+  api_key: ""
+  model_name: "gemini-2.0-flash"
+  provider: "gemini"
+  frontend_list: ""
