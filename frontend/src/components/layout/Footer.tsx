@@ -30,19 +30,22 @@ const Footer = () => {
         <p className="text-white text-xl font-bold">Menu</p>
         <ul className="flex flex-col items-center justify-center w-full h-full gap-0">
           <li className="text-white text-md">
-            <Link href="/" className="hover:text-cyan-400 cursor-pointer">Education</Link>
+            <Link href="/#profile" className="hover:text-cyan-400 cursor-pointer">Profile</Link>
           </li>
           <li className="text-white text-md">
-            <Link href="/research" className="hover:text-cyan-400 cursor-pointer">Research</Link>
+            <Link href="/#experience" className="hover:text-cyan-400 cursor-pointer">Experience</Link>
           </li>
           <li className="text-white text-md">
-            <Link href="/publications" className="hover:text-cyan-400 cursor-pointer">Experience</Link>
+            <Link href="/#education" className="hover:text-cyan-400 cursor-pointer">Education</Link>
+          </li>
+          <li className="text-white text-md">
+            <Link href="/#research" className="hover:text-cyan-400 cursor-pointer">Research</Link>
           </li>
         </ul>
       </div>
       {/* Text*/}
       <div className="flex flex-col items-center justify-center w-1/3 h-full">
-        <p className="text-white text-xl font-bold text-gray-200 mb-3">Software Engineer</p>
+        <p className="text-gray-200  text-xl font-bold mb-3">Software Engineer</p>
         <p className="text-white text-sm w-[60%] text-center">Science and technology are the engines of change—learn boldly, apply daily, and shape the future.</p>
       </div>
     </footer>
