@@ -17,7 +17,7 @@
 ---
 
 <div align="center">
-  <img src="https://thesccleaning.com/wp-content/uploads/2025/06/Screenshot-2025-06-24-at-8.06.51 PM.png" alt="idgomezj Banner" width="2000px">
+  <img src="https://thesccleaning.com/wp-content/uploads/2025/06/Screenshot-2025-06-24-at-8.18.43 PM.png" alt="idgomezj Banner" width="2000px">
 </div>
 
 ## 🚀 Overview

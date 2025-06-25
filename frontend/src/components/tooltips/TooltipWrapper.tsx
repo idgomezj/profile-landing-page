@@ -2,7 +2,7 @@
 import React, { ReactNode } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
-import "./TooltipWrrapper.css";
+import "./TooltipWrrapper.scss";
 
 interface TooltipWrapperProps {
   tooltipText: string;
