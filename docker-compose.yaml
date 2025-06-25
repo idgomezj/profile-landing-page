@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: ["/bin/sh", "-c", "npm run build && npm run start"]
+    container_name: profile-ai-frontend
+    networks:
+      - app-network
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    command: ["python3", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
+    container_name: profile-ai-backend
+    networks:
+      - app-network
+    environment:
+      api_key:  # Use your own API key
+      model_name: gemini-2.0-flash #Select the model
+      provider: gemini #Select the provider
+      frontend_url: '["http://localhost:3000"]'
+
+networks:
+  app-network:
+    driver: bridge

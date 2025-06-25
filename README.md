@@ -321,6 +321,17 @@ We welcome contributions! Please follow these steps:
 
 This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
+##  🐳  Docker compose
+
+For development, a Docker Compose setup is available. You can start it using:
+
+```bash
+docker-compose up -d
+```
+
+Make sure to set the required environment variables based on the LLM AI model you plan to use, including the appropriate API key.
+
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
