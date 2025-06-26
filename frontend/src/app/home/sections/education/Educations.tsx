@@ -2,40 +2,7 @@ import Image from 'next/image';
 
 import Phd from './pages/Phd';
 import AdditionalCertifications from './pages/AdditionalCertifications';
-const educations = [
-  {
-    title: "Master's Degree",
-    field: "Master of Engineering - Industrial Engineering",
-    years: "2015 - 2017",
-    grade: "Grade: Master of Engineering - Industrial Engineering",
-  },
-  {
-    title: "Postgraduate Degree",
-    field: "Corporate Finance",
-    years: "2015 - 2016",
-    grade: "Grade: Specialist in Corporate Finance",
-  },
-  {
-    title: "Engineer's Degree",
-    field: "Engineering Physics",
-    years: "2012 - 2015",
-    grade: "Grade: Physics Engineer",
-  },
-  {
-    title: "Postgraduate Degree",
-    field: "Production and Operations Management",
-    years: "2013 - 2014",
-    grade: "Grade: Specialist Direction of Production and Operations",
-  },
-  {
-    title: "Engineer's Degree",
-    field: "Industrial Engineering",
-    years: "2010 - 2014",
-    grade: "Grade: Industrial Engineering",
-  },
-];
-
-
+import { educations } from './data';
 
 const Educations = () => {
   return (

@@ -13,7 +13,7 @@ export default function Main(){
             <div className="flex flex-col items-center justify-between h-full">
               <div className="flex flex-row w-full pr-8 pl-16 pt-4 items-center justify-between ">
                 <p className="text-gray-500 text-md">IDGOMEZJ</p>
-                <p className="text-gray-800 text-md">Let's ask Ivan AI Agent to know more about me</p>
+                <p className="text-gray-800 text-md">Want to know more? Just ask my AI agent anything about me!</p>
                 <Image 
                     src="/logo/logo-black.png" 
                     alt="Logo" 

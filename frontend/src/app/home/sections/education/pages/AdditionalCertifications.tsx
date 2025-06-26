@@ -1,20 +1,7 @@
 import { memo } from "react";
-import { BookIcon } from "@/components/ui/icons";
 
-const otherEducations = [
-  {
-    title: "Data Science Training",
-    field: "Correlation One",
-    years: "2022",
-    icon: <BookIcon className="w-5 h-5 text-emerald-600" />,
-  },
-  {
-    title: "PMI Course Certificate",
-    field: "Project Management",
-    years: "2015",
-    icon: <BookIcon className="w-5 h-5 text-emerald-600" />,
-  },
-];
+import { otherEducations } from "../data";
+
 
 const AdditionalCertifications = memo(() => (
   <section className="mt-20">

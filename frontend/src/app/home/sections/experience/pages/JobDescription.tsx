@@ -1,5 +1,5 @@
 import { ExperienceInfo, Stack } from '@/interfaces';
-import ReactMarkdown from 'react-markdown';
+// import ReactMarkdown from 'react-markdown';
 
 interface JobDescriptionProps {
   experienceSelected: ExperienceInfo;
@@ -28,23 +28,28 @@ const JobDescription = ({ experienceSelected }: JobDescriptionProps) => {
 
         {/* Right: Description */}
         <div className="relative z-10 flex flex-col text-white space-y-6 lg:w-1/2 w-full">
-          <h2 className="text-3xl font-bold leading-snug">{experienceSelected.title}</h2>
-          <a
-            href={experienceSelected.link}
-            className="text-lg w-full text-gray-200 hover:text-cyan-400 hover:scale-110 transition-transform origin-left"
-          >
-            {experienceSelected.company}
-          </a>
-          <p className="text-sm text-gray-400">{experienceSelected.date}</p>
+
+          <div className="flex flex-col gap-1 mb-2">
+            <h2 className="text-3xl font-bold leading-snug mb-0">{experienceSelected.title}</h2>
+            <a
+                href={experienceSelected.link}
+                className="text-lg w-full text-gray-200 hover:text-cyan-400 hover:scale-110 transition-transform origin-left m-0"
+            >
+              {experienceSelected.company}
+            </a>
+            <p className="text-sm text-gray-400">{experienceSelected.date}</p>
+          </div>
+
           <div className="text-base text-gray-200 leading-relaxed prose prose-invert max-w-none">
-            <ReactMarkdown>{experienceSelected.content.description}</ReactMarkdown>
+            {/* <ReactMarkdown>{experienceSelected.content.description}</ReactMarkdown> */}
+            <div dangerouslySetInnerHTML={{ __html: experienceSelected.content.description }} />
           </div>
         </div>
       </div>
 
       {/* Row 2: Grouped Tech Stack */}
       <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl border border-white/20 shadow-md w-full">
-        <h3 className="text-lg font-semibold text-white mb-6">Tech Stack Used</h3>
+        <h3 className="text-lg font-semibold text-white mb-6">TECH STACK USED</h3>
 
         <div className="space-y-8">
           {groupedStack.map(({ title, items }) =>
@@ -58,7 +63,7 @@ const JobDescription = ({ experienceSelected }: JobDescriptionProps) => {
                       className="border-l-4 border-blue-400 pl-4"
                     >
                       <p className="text-white font-medium">{item.name}</p>
-                      <p className="text-sm text-gray-300">{item.description}</p>
+                      <p className="text-sm text-gray-300 text-justify">{item.description}</p>
                     </div>
                   ))}
                 </div>

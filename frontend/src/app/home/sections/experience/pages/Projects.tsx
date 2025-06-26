@@ -1,9 +1,8 @@
 'use client';
 
-import { projectsData } from './data';
+import { projectsData } from '../data';
 import { ExperienceInfo } from '@/interfaces';
 import { useState } from 'react';
-import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 const Projects = () => {
@@ -16,7 +15,7 @@ const Projects = () => {
       <div className="max-w-5xl mx-auto text-center space-y-4">
         <h2 className="text-3xl font-bold text-cyan-700 dark:text-cyan-400">Other Projects & Contributions</h2>
         <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-          These are additional works I've done in a short period of time. Each helped me gain hands-on experience, explore new technologies, and grow professionally across domains like AI, infrastructure, backend systems, and DevOps.
+          These are additional works I&apos;ve done in a short period of time. Each helped me gain hands-on experience, explore new technologies, and grow professionally across domains like AI, infrastructure, backend systems, and DevOps.
         </p>
       </div>
 

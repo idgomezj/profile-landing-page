@@ -40,7 +40,7 @@ const Research = () => {
               height="100%"
             >
               <p className="text-black p-4">
-                Your browser doesn't support PDFs.{" "}
+                Your browser doesn&apos;t support PDFs.{" "}
                 <a href={selected.file} className="text-blue-500 underline">
                   Download the file instead.
                 </a>

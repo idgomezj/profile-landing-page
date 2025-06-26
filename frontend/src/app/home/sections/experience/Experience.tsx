@@ -2,12 +2,12 @@
 import React, { memo, useState } from "react";
 import { experienceData } from './data';
 import {ExperienceInfo} from '@/interfaces'
-import JobDescription from './JobDescription';
-import Projects from './Projects';
+import JobDescription from './pages/JobDescription';
+import Projects from './pages/Projects';
 
 const Experience = memo(() => {
 
-    const [experienceSelected, SetExperienceSelected ] = useState<ExperienceInfo>(experienceData[0]);
+    const [experienceSelected, SetExperienceSelected ] = useState<ExperienceInfo>(experienceData[3]);
 
 
   return (
@@ -20,7 +20,7 @@ const Experience = memo(() => {
                     I Build <span className="text-cyan-500">Scalable</span> & Intelligent Systems
                 </h2>
                 <p className="text-gray-500">
-                    With years of hands-on experience in software engineering, AI solutions, and cloud infrastructure, I've helped startups and enterprises transform their operations through smart, secure, and scalable technologies. From backend architecture to AI-powered platforms, I bring ideas to life with precision and impact.
+                    With years of hands-on experience in software engineering, AI solutions, and cloud infrastructure, I&apos;ve helped startups and enterprises transform their operations through smart, secure, and scalable technologies. From backend architecture to AI-powered platforms, I bring ideas to life with precision and impact.
                 </p>
             </div>
 
@@ -31,20 +31,30 @@ const Experience = memo(() => {
                 <div
                     key={idx}
                     onClick={()=>(SetExperienceSelected(service))}
-                    className=
-                    "flex flex-col items-center text-center bg-white shadow-md border-t-[6px] 
-                    border-cyan-500 px-6 pt-4 rounded-md w-full hover:shadow-xl transition-shadow
-                    cursor-pointer hover:scale-110"
+                    className={`flex flex-col items-center text-center shadow-md  px-6 pt-4 rounded-md w-full transition-all duration-300 cursor-pointer
+                    ${experienceSelected === service 
+                        ? 'bg-gradient-to-br from-cyan-50 to-blue-50  shadow-lg scale-105 ring-2 ring-cyan-200' 
+                        : 'bg-white border-cyan-500 hover:shadow-xl hover:scale-110 border-t-[6px] border-cyan-600'
+                    }`}
                 >
-                    <div className="flex justify-center items-center mb-0 h-24">
+                    <div className={`flex justify-center items-center mb-0 h-24 transition-transform duration-300
+                    ${experienceSelected === service ? 'scale-110' : ''}`}>
                         {service.icon}
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-700">{service.title}</h3>
-                        <p className="text-sm text-gray-500">{service.company}</p>
-                        <p className="text-sm text-gray-500">{service.date}</p>
+                        <h3 className={`text-lg font-semibold transition-colors duration-300
+                        ${experienceSelected === service ? 'text-cyan-700' : 'text-gray-700'}`}>
+                            {service.title}
+                        </h3>
+                        <p className={`text-sm transition-colors duration-300
+                        ${experienceSelected === service ? 'text-cyan-600' : 'text-gray-500'}`}>
+                            {service.company}
+                        </p>
+                        <p className={`text-sm transition-colors duration-300
+                        ${experienceSelected === service ? 'text-cyan-600' : 'text-gray-500'}`}>
+                            {service.date}
+                        </p>
                     </div>
-
                 </div>
                 ))}
             </div>
