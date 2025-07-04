@@ -1,51 +1,8 @@
 import { memo } from "react";
+import { infraData } from "./data";
 
 const maxYears = 6; // Your Linux and AWS experience is around this
 
-const infraData = [
-  {
-    title: "Linux Systems",
-    items: [
-      { name: "Docker", years: 6 },
-      { name: "Docker Compose", years: 6 },
-      { name: "Debian-based (Ubuntu, etc.)", years: 2 },
-      { name: "Alpine Linux", years: 2 },
-      { name: "Ubuntu", years: 5 },
-
-    ],
-  },
-  {
-    title: "AWS – Traditional Infrastructure",
-    items: [
-      { name: "EC2", years: 5 },
-      { name: "ECR", years: 5 },
-      { name: "ECS (Fargate/EC2)", years: 4 },
-      { name: "Route 53", years: 4 },
-      { name: "RDS", years: 3 },
-      { name: "S3", years: 5 },
-      { name: "IAM & VPC", years: 4 },
-    ],
-  },
-  {
-    title: "AWS – Serverless",
-    items: [
-      { name: "Lambda", years: 3 },
-      { name: "API Gateway", years: 3 },
-      { name: "Step Functions", years: 2 },
-      { name: "Secrets Manager", years: 2 },
-    ],
-  },
-  {
-    title: "Kubernetes Ecosystem",
-    items: [
-      { name: "Kubernetes", years: 3 },
-      { name: "Helm", years: 3 },
-      { name: "ArgoCD", years: 3 },
-      { name: "Traefik", years: 3 },
-      { name: "Cloudflare Tunnel", years: 3 },
-    ],
-  },
-];
 
 const Infrastructure = memo(() => {
   return (

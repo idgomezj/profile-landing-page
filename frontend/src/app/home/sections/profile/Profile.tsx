@@ -8,7 +8,7 @@ import CI_CD from "./pages/CI_CD";
 import Infrastructure from "./pages/Infrastructure";
 import TechStack from "./pages/TechStack";
 import Image from "next/image";
-import Data from "./pages/Data";
+import AiData from "./pages/AiData";
 // Constants
 const MENU_ITEMS = [
     { id: 'profile', label: 'PROFILE' },
@@ -27,7 +27,7 @@ const PAGES = {
     frameworks: <Frameworks />,
     "ci/cd": <CI_CD />,
     infrastructure: <Infrastructure />,
-    "ai_data": <Data />,
+    "ai_data": <AiData />,
     tools: <TechStack />
 }
 

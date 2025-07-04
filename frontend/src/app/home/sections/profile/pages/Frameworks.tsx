@@ -1,39 +1,9 @@
 import { memo } from "react";
+import { frameworkData } from "./data";
 
 const maxYears = 6;
 
-const frameworkData = [
-  {
-    title: "Python",
-    items: [
-      { name: "FastAPI", years: 6 },
-      { name: "Flask", years: 4 },
-      { name: "Django", years: 1 },
-    ],
-  },
-  {
-    title: "Frontend",
-    items: [
-      { name: "React", years: 5 },
-      { name: "Angular", years: 3 },
-      { name: "Next.js", years: 2 },
-    ],
-  },
-  {
-    title: "Golang",
-    items: [
-      { name: "Echo", years: 4 },
-      { name: "Cobra", years: 3 },
-      { name: "Bubbletea &  Lipgloss ", years: 3 },
-    ],
-  },
-  {
-    title: "Rust",
-    items: [
-      { name: "Axum", years: 2 },
-    ],
-  },
-];
+
 
 const Frameworks = memo(() => {
   return (

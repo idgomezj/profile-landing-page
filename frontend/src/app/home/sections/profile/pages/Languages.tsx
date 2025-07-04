@@ -1,31 +1,9 @@
 import { memo } from "react";
+import { languageData } from './data'
 
 const maxYears = 8;
 
-const languageData = [
-  {
-    title: "Backend",
-    items: [
-      { name: "Python", years: 8 },
-      { name: "Go", years: 4 },
-      { name: "Rust", years: 2 },
-    ],
-  },
-  {
-    title: "Frontend",
-    items: [
-      { name: "TypeScript & JavaScript", years: 6 },
-    ],
-  },
-  {
-    title: "Data & General Purpose",
-    items: [
-      { name: "SQL", years: 7 },
-      { name: "MATLAB", years: 2 },
-      { name: "Bash", years: 5 },
-    ],
-  },
-];
+
 
 const Languages = memo(() => {
   return (

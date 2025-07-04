@@ -1,35 +1,35 @@
 import { memo } from "react";
-import { ciCdData } from "./data";
+import { aiDataTools } from "./data";
+const maxYears = 6;
 
 
-const maxYears = 8;
 
 
 
-const CI_CD = memo(() => {
+const AiData = memo(() => {
   return (
     <div className="max-w-md p-6">
       <h1 className="text-4xl font-light">The</h1>
-      <h2 className="text-4xl font-bold -mt-2">CI/CD</h2>
+      <h2 className="text-4xl font-bold -mt-2">Data & AI</h2>
       <p className="mt-4 text-gray-700 leading-relaxed">
-        I design and automate infrastructure, pipelines, and deployments using modern DevOps tools. Below is my experience across CI/CD, cloud platforms, and Kubernetes orchestration.
+        I design full data pipelines, deploy scalable processing systems, and build intelligent applications with modern machine learning frameworks and APIs. My work spans database integration, stream processing, orchestration, and AI model deployment.
       </p>
 
       <div className="mt-6 space-y-6">
-        {ciCdData.map((section) => (
+        {aiDataTools.map((section) => (
           <div key={section.title}>
             <h3 className="text-lg font-semibold mb-2">{section.title}</h3>
             <div className="space-y-2">
-              {section.items.map((tool) => (
-                <div key={tool.name}>
+              {section.items.map((item) => (
+                <div key={item.name}>
                   <div className="flex justify-between text-sm font-medium text-gray-800">
-                    <span>{tool.name}</span>
-                    <span>{tool.years} yr{tool.years !== 1 ? "s" : ""}</span>
+                    <span>{item.name}</span>
+                    <span>{item.years} yr{item.years !== 1 ? "s" : ""}</span>
                   </div>
                   <div className="w-full bg-gray-200 h-2 rounded-full">
                     <div
                       className="h-2 bg-black rounded-full"
-                      style={{ width: `${(tool.years / maxYears) * 100}%` }}
+                      style={{ width: `${(item.years / maxYears) * 100}%` }}
                     ></div>
                   </div>
                 </div>
@@ -42,6 +42,6 @@ const CI_CD = memo(() => {
   );
 });
 
-CI_CD.displayName = "CI_CD";
+AiData.displayName = "AiData";
 
-export default CI_CD;
+export default AiData;

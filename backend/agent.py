@@ -7,7 +7,7 @@ from pydantic_ai.providers.google_gla import GoogleGLAProvider
 import logging
 
 from models import Profile, ProfileResponse
-from data import profile
+from data import profile, work_experience, education, research, congresses
 from config import get_settings
 from httpx import AsyncClient
 
@@ -78,18 +78,17 @@ def fetch_profile() -> Profile:
     try:
         profile_data = get_profile()
         logger.info(f"Successfully fetched profile for {profile_data.name}")
-        logger.debug(f"Profile contains {len(profile_data.experience)} experience sections")
         return profile_data
     except Exception as e:
         logger.error(f"Error fetching profile: {str(e)}")
         raise
 
 @agent.tool_plain
-def get_comprehensive_summary() -> str:
+def get_technology_experience() -> str:
     """Get a comprehensive summary of all Ivan's skills and experience."""
-    logger.info("Tool called: get_comprehensive_summary")
+    logger.info("Tool called: get_technology_experience")
     logger.debug(f"Getting comprehensive summary for {profile.name}")
-    
+
     try:
         profile_data = get_profile()
         
@@ -98,12 +97,13 @@ def get_comprehensive_summary() -> str:
         summary_parts.append(f"**Professional Summary:** {profile_data.summary}")
         summary_parts.append("")
         summary_parts.append("**Skills & Experience by Category:**")
-        
-        for section in profile_data.experience:
-            summary_parts.append(f"\n**{section.category}:**")
-            for item in section.items:
-                summary_parts.append(f"  • {item.title}: {item.years} years")
-        
+        for experience in profile_data.experience:
+            summary_parts.append(f"\n**Group {experience[0]}:**")
+            for section in experience[1]:
+                summary_parts.append(f"\n*Sub-Group {section.category}:*")
+                for item in section.items:
+                    summary_parts.append(f"  • {item.title}: {item.years} years")
+            
         summary = "\n".join(summary_parts)
         logger.info(f"Generated comprehensive summary with {len(summary_parts)} sections")
         logger.debug(f"Summary length: {len(summary)} characters")
@@ -113,138 +113,40 @@ def get_comprehensive_summary() -> str:
         raise
 
 @agent.tool_plain
-def get_skill_experience(skill_name: str) -> str:
-    """Get specific information about a skill or technology."""
-    logger.info(f"Tool called: get_skill_experience with skill_name='{skill_name}'")
+def get_work_experience() -> str:
+    """Get Ivan's work experience."""
+    logger.info("Tool called: get_work_experience")
+    logger.debug(f"Getting work experience for {profile.name}")
+    return work_experience
     
-    try:
-        profile_data = get_profile()
-        
-        for section in profile_data.experience:
-            for item in section.items:
-                if skill_name.lower() in item.title.lower():
-                    result = f"{item.title}: {item.years} years of experience"
-                    logger.info(f"Found skill '{skill_name}' in {section.category}: {item.title} ({item.years} years)")
-                    return result
-        
-        logger.warning(f"No specific information found for skill: {skill_name}")
-        return f"No specific information found for {skill_name}"
-    except Exception as e:
-        logger.error(f"Error getting skill experience for '{skill_name}': {str(e)}")
-        raise
+@agent.tool_plain
+def get_education() -> str:
+    """Get Ivan's education."""
+    logger.info("Tool called: get_education")
+    logger.debug(f"Getting education for {profile.name}")
+    return education
 
 @agent.tool_plain
-def get_category_experience(category: str) -> str:
-    """Get all skills and experience in a specific category."""
-    logger.info(f"Tool called: get_category_experience with category='{category}'")
-    
-    try:
-        profile_data = get_profile()
-        
-        for section in profile_data.experience:
-            if category.lower() in section.category.lower():
-                skills = [f"{item.title} ({item.years} years)" for item in section.items]
-                result = f"{section.category}: {', '.join(skills)}"
-                logger.info(f"Found category '{category}' with {len(skills)} skills")
-                logger.debug(f"Skills in {section.category}: {skills}")
-                return result
-        
-        logger.warning(f"No information found for category: {category}")
-        return f"No information found for category: {category}"
-    except Exception as e:
-        logger.error(f"Error getting category experience for '{category}': {str(e)}")
-        raise
+def get_research() -> str:
+    """Get Ivan's research."""
+    logger.info("Tool called: get_research")
+    logger.debug(f"Getting research for {profile.name}")
+    return research
 
 @agent.tool_plain
-def get_top_skills(top_n: int = 5) -> str:
-    """Get Ivan's top skills by years of experience."""
-    logger.info(f"Tool called: get_top_skills with top_n={top_n}")
-    
-    try:
-        profile_data = get_profile()
-        
-        all_skills = []
-        for section in profile_data.experience:
-            for item in section.items:
-                all_skills.append((item.title, item.years))
-        
-        logger.debug(f"Total skills found: {len(all_skills)}")
-        
-        # Sort by years of experience (descending)
-        all_skills.sort(key=lambda x: x[1], reverse=True)
-        
-        top_skills = all_skills[:top_n]
-        result = f"Top {top_n} skills by experience: " + ", ".join([f"{skill} ({years} years)" for skill, years in top_skills])
-        
-        logger.info(f"Generated top {len(top_skills)} skills")
-        logger.debug(f"Top skills: {top_skills}")
-        return result
-    except Exception as e:
-        logger.error(f"Error getting top skills: {str(e)}")
-        raise
+def get_congresses() -> str:
+    """Get Ivan's congresses."""
+    logger.info("Tool called: get_congresses")
+    logger.debug(f"Getting congresses for {profile.name}")
+    return congresses
 
 @agent.tool_plain
-def get_experience_overview() -> str:
-    """Get an overview of Ivan's experience across all categories."""
-    logger.info("Tool called: get_experience_overview")
+def get_research_and_congresses() -> str:
+    """Get Ivan's research and congresses."""
+    logger.info("Tool called: get_research_and_congresses")
+    logger.debug(f"Getting research and congresses for {profile.name}")
+    return research + "\n" + congresses
     
-    try:
-        profile_data = get_profile()
-        
-        overview = []
-        overview.append(f"**{profile_data.name}** - {profile_data.title}")
-        overview.append(f"**Summary:** {profile_data.summary}")
-        overview.append("")
-        overview.append("**Experience Overview:**")
-        
-        for section in profile_data.experience:
-            total_years = sum(item.years for item in section.items)
-            skill_count = len(section.items)
-            overview.append(f"• **{section.category}:** {skill_count} skills, {total_years} total years")
-            logger.debug(f"Category {section.category}: {skill_count} skills, {total_years} total years")
-        
-        result = "\n".join(overview)
-        logger.info(f"Generated experience overview with {len(profile_data.experience)} categories")
-        return result
-    except Exception as e:
-        logger.error(f"Error generating experience overview: {str(e)}")
-        raise
-
-@agent.tool_plain
-def get_profile_details() -> str:
-    """Get detailed profile information for comprehensive summaries."""
-    logger.info("Tool called: get_profile_details")
-    
-    try:
-        profile_data = get_profile()
-        
-        details = []
-        details.append(f"**Name:** {profile_data.name}")
-        details.append(f"**Title:** {profile_data.title}")
-        details.append(f"**Professional Summary:** {profile_data.summary}")
-        details.append("")
-        details.append("**Detailed Experience Breakdown:**")
-        
-        total_skills = 0
-        total_years = 0
-        
-        for section in profile_data.experience:
-            details.append(f"\n**{section.category}:**")
-            section_years = sum(item.years for item in section.items)
-            total_years += section_years
-            total_skills += len(section.items)
-            details.append(f"Total experience in this category: {section_years} years")
-            for item in section.items:
-                details.append(f"  • {item.title}: {item.years} years")
-        
-        result = "\n".join(details)
-        logger.info(f"Generated detailed profile with {total_skills} total skills and {total_years} total years")
-        logger.debug(f"Profile details length: {len(result)} characters")
-        return result
-    except Exception as e:
-        logger.error(f"Error generating profile details: {str(e)}")
-        raise
-
 # Add a function to log agent responses
 def log_agent_response(question: str, response: ProfileResponse):
     """Log agent responses for monitoring and debugging."""

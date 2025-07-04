@@ -13,6 +13,7 @@ export default function Home(){
       <div id="profile">
         <Profile />
       </div>
+      <div className="h-8 bg-black mb-6" />
       <div id="experience">
         <Experiense />
       </div>
